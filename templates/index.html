@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>TODO</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 p-5 bg-dark text-light" style="text-align: center;">
+                <h1>TODO LIST</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 p-5">
+                <div class="border border-dark p-3 rounded">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Name</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required placeholder="Enter the name" name="name">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Priority</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter the priority" name="prio" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Priority</label>
+                        <input type="date" class="form-control" id="exampleInputPassword1" name="date" required>
+                      </div>
+                      <button type="submit" class="btn btn-dark">ADD</button>
+                </form>
+            </div>
+            </div>
+            <div class="col-md-6 p-5">
+                {% for i in obj %}
+                <div class="border-dark p-5 rounded bg-dark text-light">
+                    <h3>Name : {{i.name}}</h1> <br>
+                    <h4>Priority : {{i.priority}}</h3><br>
+                    <p><b>Date : {{i.date}}</b></p>
+                    <a href="delete/{{i.id}}"><button type="submit" class="btn btn-danger">DONE</button></a>
+                    <a href="update/{{i.id}}"><button type="submit" class="btn btn-warning">EDIT</button></a>
+                </div>
+                <br>
+                {% endfor %}
+            </div>
+        </div>
+        
+        
+
+    </div>
+</body>
+</html>
